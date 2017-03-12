@@ -1,7 +1,17 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+*:link, *:visited, *:focus, *:active {
+  text-decoration: none;
+  outline: none;
+}
+
+.container {
+  padding: 0;
+  width: 980px;
 }
 
 header {
@@ -10,23 +20,111 @@ header {
   background: #24292e;
 }
 
-header nav {
+header .container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   margin: 0 auto;
   position: relative;
   width: 980px;
+  height: 54px;
 }
 
-header nav ul {
+header .container a.logo {
+  margin-right: 10px;
+  height: 54px;
+}
+
+header .container a.logo svg {
+  fill: #fff;
+  transform: translateY(30%);
+}
+
+header .container .search-bar {
   display: inline-block;
-  overflow: hidden;
-  height: 18px;
+  margin: 0;
 }
 
-header nav ul li {
+header .container .search-bar div, header .container .search-bar input {
+  padding: 0 8px;
+  line-height: 28px;
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.75);
+  background: #3F4347;
+  border: 1px solid #282e34;
+}
+
+header .container .search-bar div {
+  display: inline-block;
+  margin-right: 0;
+  border-right: none;
+  border-radius: 3px 0 0 3px;
+}
+
+header .container .search-bar input {
+  position: relative;
+  margin-left: 0;
+  left: -4px;
+  border-radius: 0 3px 3px 0;
+}
+
+header .container .search-bar .active {
+  background: #6f767d;
+}
+
+header .container .search-bar .active-light {
+  background: #575d62;
+}
+
+header .container > ul {
+  margin: 0;
+  height: 30px;
+}
+
+header .container > ul > li {
   display: inline-block;
   list-style: none;
-  font-size: 12px;
+  padding: 5px 8px;
+}
+
+header .container > ul > li > a {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+header .container > ul > li > a:hover {
+  text-decoration: none;
   color: white;
+}
+
+header .container .dropdown-bar {
+  position: absolute;
+  top: 0;
+  right: -5px;
+  height: 54px;
+}
+
+header .container .dropdown-bar > li {
+  margin-left: 5px;
+  padding: 0;
+}
+
+header .container .dropdown-bar > li > a {
+  position: relative;
+  padding: 5px 8px;
+  border: none;
+  line-height: 44px;
+}
+
+header .container .dropdown-bar > li > a .glyphicon {
+  position: relative;
+  top: 3px;
+}
+
+header .container .dropdown-bar > li img {
+  border-radius: 3px;
 }
 
 .page-head {
@@ -37,11 +135,13 @@ header nav ul li {
 }
 
 .page-head > div {
+  position: relative;
   margin: 0 auto;
   width: 980px;
 }
 
 .page-head > div .breadcrumb {
+  display: inline-block;
   margin: 0;
   padding: 0;
   font-size: 18px;
@@ -49,8 +149,58 @@ header nav ul li {
   background: none;
 }
 
+.page-head > div .breadcrumb a {
+  color: #0366d6;
+}
+
+.page-head > div .breadcrumb svg {
+  margin-right: 4px;
+  height: 22px;
+  line-height: 1.5;
+  vertical-align: text-bottom;
+  fill: rgba(27, 31, 35, 0.3);
+}
+
 .page-head > div .breadcrumb .weight {
-  font-weight: bold;
+  font-weight: 600;
+}
+
+.page-head > div .show-style-bar {
+  display: inline-block;
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
+.page-head > div .show-style-bar .sub-show-style-bar {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.page-head > div .show-style-bar .sub-show-style-bar a {
+  padding: 3px 10px;
+  color: #000;
+  border: 1px solid #C8CBCE;
+  border-radius: 3px 0 0 3px;
+}
+
+.page-head > div .show-style-bar .sub-show-style-bar a:hover {
+  text-decoration: none;
+}
+
+.page-head > div .show-style-bar .sub-show-style-bar a svg {
+  margin-right: 3px;
+  transform: translateY(20%);
+}
+
+.page-head > div .show-style-bar .sub-show-style-bar a .caret {
+  transform: translateY(-20%);
+}
+
+.page-head > div .show-style-bar .sub-show-style-bar a:nth-child(2) {
+  background: #fff;
+  border-left: none;
+  border-radius: 0 3px 3px 0;
 }
 
 .page-head > div .navbar {
@@ -69,7 +219,7 @@ header nav ul li {
 
 .page-head > div .navbar ul li {
   display: inline-block;
-  margin: 0 3px 0;
+  margin: 0;
   padding: 7px 15px 8px;
   background: transparent;
   border: 1px solid transparent;
@@ -79,7 +229,23 @@ header nav ul li {
   font-size: 14px;
 }
 
-.page-head > div .navbar ul li:hover {
+.page-head > div .navbar ul li a {
+  color: #586069;
+}
+
+.page-head > div .navbar ul li a svg {
+  height: 19px;
+  line-height: 1.5;
+  vertical-align: text-bottom;
+  fill: rgba(27, 31, 35, 0.3);
+}
+
+.page-head > div .navbar ul li a span {
+  margin: 0 4px;
+}
+
+.page-head > div .navbar ul li:hover a {
+  color: black;
   text-decoration: none;
 }
 
@@ -93,6 +259,10 @@ header nav ul li {
   border-top: 3px solid #E36209;
   border-bottom: 1px solid #FFFFFF;
   border-radius: 3px 3px 0 0;
+}
+
+.page-head > div .navbar ul > li.active svg {
+  fill: #24292e;
 }
 
 .main {
@@ -129,11 +299,37 @@ header nav ul li {
   margin: 5px 0;
 }
 
+.main .container .container-head .container-head-buttons > button:first-child {
+  padding-top: 3px;
+}
+
 .main .container .container-head .container-head-buttons .input-group {
-  margin-left: 137px;
+  margin-left: 155px;
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.main .container .container-head .container-head-buttons .input-group input[type=text] {
+  background: #FFF;
+}
+
+.main .container .container-head .container-head-buttons .input-group .input-group-btn > button {
+  height: 30px;
+}
+
+.main .container .container-head .container-head-buttons .input-group .active {
+  background-image: linear-gradient(-180deg, #edf0f4 0%, #e6ebf1 90%);
+  border: 1px solid #A1A5AA;
+}
+
+.main .container .container-head .container-head-buttons .octicon-desktop-download {
+  transform: translateY(20%);
+  margin-right: 3px;
+}
+
+.main .container .container-head .container-head-buttons svg {
+  fill: #24292E;
 }
 
 .main .container .container-body {
@@ -150,12 +346,14 @@ header nav ul li {
 }
 
 .main .container .container-body p {
-  font-family: -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
   line-height: 21px;
 }
 
 .main .container .container-body pre {
+  font-size: 14px;
+  position: relative;
   padding: 10px 55px 10px 10px;
 }
 
@@ -176,6 +374,11 @@ header nav ul li {
   clear: both;
 }
 
+pre {
+  background: #F8F6FA;
+  border: none;
+}
+
 .protip {
   margin: 0 auto;
   padding: 30px;
@@ -183,24 +386,35 @@ header nav ul li {
   text-align: center;
 }
 
+.protip svg {
+  transform: translateY(20%);
+}
+
 footer {
+  position: relative;
+  overflow: hidden;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 40px 0;
   width: 980px;
-  height: 22px;
   border-top: 1px solid #ECEAEF;
 }
 
+footer:after {
+  content: " ";
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
 footer .footer-nav {
-  margin: 0 auto;
   position: relative;
+  margin: 0 auto;
   width: 980px;
-  height: 15px;
+  height: 18px;
 }
 
 footer .footer-nav ul {
   display: inline-block;
-  overflow: hidden;
   height: 18px;
 }
 
@@ -216,7 +430,50 @@ footer .footer-nav ul li:first-child {
   margin-left: 0;
 }
 
-footer .footer-nav ul:nth-child(2) {
+footer .footer-nav > a {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  fill: rgba(27, 31, 35, 0.3);
+}
+
+footer .footer-nav > a *:hover {
+  fill: rgba(27, 31, 35, 0.5);
+}
+
+footer .footer-nav ul:nth-child(3) {
   position: absolute;
   right: 0;
+}
+
+.counter {
+  display: inline-block;
+  margin: 0px !important;
+  padding: 2px 5px;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 50%;
+  color: #000;
+  background: #E8E9EB;
+}
+
+.btn-github {
+  color: #000;
+  border: 1px solid #C9CDCF;
+  background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
+}
+
+.btn-github:hover {
+  border: 1px solid #A1A5AA;
+  background-image: linear-gradient(-180deg, #edf0f4 0%, #e6ebf1 90%);
+}
+
+.btn-copy {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.btn-copy > svg {
+  transform: translateY(20%);
 }

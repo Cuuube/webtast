@@ -1,27 +1,118 @@
 $headNav: 54px;
 $main-width: 980px;
+$github-background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%);
+$github-background-image-hover: linear-gradient(-180deg, #edf0f4 0%, #e6ebf1 90%);
+$svg-fill: rgba(27, 31, 35, 0.3);
+$svg-fill-hover: rgba(27, 31, 35, 0.5);
 * {
 	margin: 0;
 	padding: 0;
-	font-family: -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	
+	&:link, &:visited, &:focus, &:active {
+		text-decoration: none;
+		outline: none;
+	}
+	
 }
+
+.container {
+	padding: 0;
+	width: $main-width;
+}
+
 header {
 	width: 100%;
 	height: $headNav;
 	background: #24292e;
-	nav {
+	.container {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
 		margin: 0 auto;
 		position: relative;
 		width: $main-width;
-		ul {
+		height: $headNav;
+		a.logo {
+			margin-right: 10px;
+			height: $headNav;
+			svg {
+				fill: #fff;
+				transform: translateY(30%);
+			}
+		}
+		.search-bar {
 			display: inline-block;
-			overflow:hidden;
-			height: 18px;
-			li {
+			margin: 0;
+			div, input {
+				padding: 0 8px;
+				line-height: 28px;
+				font-weight: normal;
+				color: rgba(255, 255, 255, 0.75);
+				background: #3F4347;
+				border: 1px solid #282e34;
+			}
+			div {
+				display: inline-block;
+				margin-right: 0;
+				border-right: none;
+				border-radius: 3px 0 0 3px;
+			}
+			input {
+				position: relative;
+				margin-left: 0;
+				left: -4px;
+				border-radius: 0 3px 3px 0;
+			}
+			.active {
+				background: lighten(#3F4347,20%);
+			}
+			.active-light {
+				background: lighten(#3F4347,10%);
+			}
+		}
+		&>ul {
+			margin: 0;
+			height: 30px;
+			// overflow:hidden;
+			// height: 18px;
+			&>li {
 				display: inline-block;
 				list-style: none;
-				font-size: 12px;
-				color: white;
+				padding: 5px 8px;
+				&>a {
+					font-size: 14px;
+					font-weight: 600;
+					line-height: 20px;
+					color: rgba(255, 255, 255, 0.75);
+					&:hover {
+						text-decoration: none;
+						color: rgba(255, 255, 255, 1);
+					}
+				}
+			}
+		}
+		.dropdown-bar {
+			position: absolute;
+			top: 0;
+			right: -5px;
+			height: $headNav;
+			&>li {
+				margin-left: 5px;
+				padding: 0;
+				&>a {
+					position: relative;
+					padding: 5px 8px;
+					border: none;
+					line-height: $headNav - 5px - 5px;
+					.glyphicon {
+						position: relative;
+						top: 3px;
+					}
+				}
+				img {
+					border-radius: 3px;
+				}
 			}
 		}
 	}
@@ -32,63 +123,120 @@ header {
 	margin-bottom: 20px;
 	background: #FAFBFC;
 	border-bottom: 1px solid #E1E4E8;
-	& > div {
-		
+	&>div {
+		position: relative;
 		margin: 0 auto;
 		width: $main-width;
-
 		.breadcrumb {
+			display: inline-block;
 			margin: 0;
 			padding: 0;
 			font-size: 18px;
 			line-height: 26px;
 			background: none;
-			&  .weight {
-			font-weight: bold;
+			a {
+				color: #0366d6;
+			}
+			svg {
+				margin-right: 4px;
+				height: 22px;
+				line-height: 1.5;
+				vertical-align: text-bottom;
+				fill: $svg-fill;
+			}
+			& .weight {
+				font-weight: 600;
+			}
+		}
+		.show-style-bar {
+			display: inline-block;
+			position: absolute;
+			top: 5px;
+			right: 0;
+			.sub-show-style-bar {
+				display: inline-block;
+				margin-left: 10px;
+				a {
+					padding: 3px 10px;
+					color: #000;
+					//background: $github-background-image;
+					border: 1px solid #C8CBCE;
+					border-radius: 3px 0 0 3px;
+					&:hover {
+						//background-image: linear-gradient(-180deg, #dadbdc 0%, #cfd3e6 90%);
+						text-decoration: none;
+					}
+					svg {
+						margin-right: 3px;
+						transform: translateY(20%);
+					}
+					.caret {
+						transform: translateY(-20%);
+					}
+				}
+				a:nth-child(2) {
+					background: #fff;
+					border-left: none;
+					border-radius: 0 3px 3px 0;
+				}
 			}
 		}
 		.navbar {
-
 			position: relative;
 			margin: 0;
 			height: 40px;
-			ul{
+			ul {
 				position: absolute;
 				bottom: -2px;
-
 				display: inline-block;
-				margin: 0; 
-				overflow:hidden;
+				margin: 0;
+				overflow: hidden;
 				li {
 					display: inline-block;
-					margin: 0 3px 0;
+					margin: 0;
+					// margin: 0 3px 0;
 					padding: 7px 15px 8px;
 					background: transparent;
 					border: 1px solid transparent;
 					border-top: 3px solid transparent;
-					border-bottom: 1px solid transparent; 
-					
+					border-bottom: 1px solid transparent;
 					list-style: none;
 					font-size: 14px;
-					&:hover {
+					a {
+						color: #586069;
+						svg {
+							height: 19px;
+							line-height: 1.5;
+							vertical-align: text-bottom;
+							fill: $svg-fill;
+						}
+						span {
+							margin: 0 4px;
+						}
+					}
+					&:hover a {
+						color: black;
 						text-decoration: none;
 					}
 				}
 				li:first-child {
 					margin: 0;
 				}
-				& > li.active {
+				&>li.active {
 					background: #FFFFFF;
 					border: 1px solid #E1E4E8;
 					border-top: 3px solid #E36209;
-					border-bottom: 1px solid #FFFFFF; 
+					border-bottom: 1px solid #FFFFFF;
 					border-radius: 3px 3px 0 0;
+					svg {
+						fill: #24292e;
+					}
 				}
 			}
 		}
 	}
-
 }
+
 .main {
 	margin: 0 auto;
 	width: $main-width;
@@ -96,7 +244,6 @@ header {
 		padding: 0;
 		width: 100%;
 		border: 0px solid #D1D5DA;
-		
 		.container-head {
 			padding: 24px;
 			background: #F1F8FF;
@@ -108,18 +255,38 @@ header {
 				font-size: 20px;
 				line-height: 1.7;
 			}
-			p {margin-bottom: 0;}
+			p {
+				margin-bottom: 0;
+			}
 			.container-head-buttons {
 				position: relative;
 				margin: 5px 0;
-
+				&>button:first-child {
+					padding-top: 3px;
+				}
 				.input-group {
-					margin-left: 137px;
+					margin-left: 155px;
 					position: absolute;
 					right: 0;
 					top: 0;
+					input[type=text] {
+						background: #FFF;
+					}
+					.input-group-btn>button {
+						height: 30px;
+					}
+					.active {
+						background-image: $github-background-image-hover;
+						border: 1px solid #A1A5AA;
+					}
 				}
-
+				.octicon-desktop-download {
+					transform: translateY(20%);
+					margin-right: 3px;
+				}
+				svg {
+					fill: #24292E;
+				}
 			}
 		}
 		.container-body {
@@ -133,12 +300,13 @@ header {
 				line-height: 1.7;
 			}
 			p {
-				font-family: -apple-system,BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 				font-size: 14px;
 				line-height: 21px;
-
 			}
 			pre {
+				font-size: 14px;
+				position: relative;
 				padding: 10px 55px 10px 10px;
 			}
 			button {
@@ -158,30 +326,42 @@ header {
 		clear: both;
 	}
 }
+
+pre {
+	background: #F8F6FA;
+	border: none;
+}
 .protip {
 	margin: 0 auto;
 	padding: 30px;
 	width: $main-width;
 	text-align: center;
-
-
+	svg {
+		transform: translateY(20%);
+	}
 }
-footer {
-	margin: 0 auto;
-	padding: 20px 0;
-	width: $main-width;
-	height: 22px;
-	
-	border-top: 1px solid #ECEAEF;
 
+footer {
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 40px 0;
+	width: $main-width;
+	border-top: 1px solid #ECEAEF;
+	&:after {
+		content: " ";
+		clear: both;
+		height: 0;
+		visibility: hidden;
+	}
 	.footer-nav {
-		margin: 0 auto;
 		position: relative;
+		margin: 0 auto;
 		width: $main-width;
-		height: 15px;
+		height: 18px;
 		ul {
 			display: inline-block;
-			overflow:hidden;
+			// overflow: hidden;
 			height: 18px;
 			li {
 				display: inline-block;
@@ -194,10 +374,50 @@ footer {
 				margin-left: 0;
 			}
 		}
-		ul:nth-child(2) {
+		&>a {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			fill: rgba(27, 31, 35, 0.3);
+			*:hover {
+				fill: rgba(27, 31, 35, 0.5);
+			}
+		}
+		ul:nth-child(3) {
 			position: absolute;
 			right: 0;
 		}
 	}
-
 }
+
+.counter {
+	display: inline-block;
+	margin: 0px !important;
+	padding: 2px 5px;
+	font-size: 12px;
+	line-height: 1;
+	border-radius: 50%;
+	color: #000;
+	background: #E8E9EB;
+}
+
+.btn-github {
+	color: #000;
+	border: 1px solid #C9CDCF;
+	background-image: $github-background-image;
+	&:hover {
+		border: 1px solid #A1A5AA;
+		background-image: $github-background-image-hover;
+	}
+}
+
+.btn-copy {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	&>svg {
+		transform: translateY(20%);
+	}
+}
+
+// .dropdown-menu {}
