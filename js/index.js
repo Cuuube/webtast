@@ -3,7 +3,7 @@ function init() {
     let pages = $('.navbar>ul>li');
 
     function hander() {
-        pages.each(function (index,target) {
+        pages.each(function (index, target) {
             $(target).removeClass('active');
         });
 
@@ -11,7 +11,7 @@ function init() {
     }
 
     pages.on('click', hander);
-    
+
     function hander2() {
         if ($(this).hasClass('active-light')) {
             $(this).removeClass('active-light');
@@ -20,7 +20,7 @@ function init() {
             $(this).addClass('active-light');
             $(this).prev().addClass('active');
         }
-        
+
     }
     $('#header-search').on('focus blur', hander2);
 
@@ -36,6 +36,6 @@ function init() {
         }
     })
     $(buttons[0]).trigger('click');
-    
+
 }
 init();
